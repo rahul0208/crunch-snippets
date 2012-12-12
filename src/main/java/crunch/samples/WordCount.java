@@ -18,7 +18,6 @@ public class WordCount {
 
   @SuppressWarnings("serial")
   static class Tokenizer extends DoFn<String, String> {
-
     @Override
     public void process(String line, Emitter<String> emitter) {
       StringTokenizer tokenizer = new StringTokenizer(line);
