@@ -1,7 +1,5 @@
 package crunch.samples;
 
-import java.util.StringTokenizer;
-
 import org.apache.crunch.DoFn;
 import org.apache.crunch.Emitter;
 import org.apache.crunch.PCollection;
@@ -11,17 +9,9 @@ import org.apache.crunch.Pipeline;
 import org.apache.crunch.impl.mr.MRPipeline;
 import org.apache.crunch.types.writable.Writables;
 
-public class WordCountV2 {
+import crunch.samples.WordCount.Tokenizer;
 
-  static class Tokenizer extends DoFn<String, String> {
-    @Override
-    public void process(String line, Emitter<String> emitter) {
-      StringTokenizer tokenizer = new StringTokenizer(line);
-      while (tokenizer.hasMoreTokens()) {
-        emitter.emit(tokenizer.nextToken());
-      }
-    }
-  }
+public class WordCountV2 {
 
   static class KeyValueExchange extends DoFn<Pair<String, Long>, Pair<Long, String>> {
     @Override
