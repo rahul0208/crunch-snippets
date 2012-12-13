@@ -14,6 +14,15 @@ import org.apache.hadoop.util.bloom.Key;
 
 import crunch.samples.WordCount.Tokenizer;
 
+/**
+ * The example can be used to create a bloom filter for a file. After that it
+ * checks if the remaining of the arguments are available in the filter or not.
+ * <P>
+ * Sample input args : <i>Readme.md crunch crunch-snippets india</i>
+ * <p>
+ * This would create filter for <i>Readme.md</i> file and check the remaining
+ * words in it.
+ */
 public class BloomFilterExample {
   static class TextFilter extends BloomFilterFn<String> {
     @Override

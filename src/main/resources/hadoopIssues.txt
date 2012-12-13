@@ -1,0 +1,11 @@
+HADOOP-9085	Unresolved	start namenode failure,bacause pid of namenode pid file is other process pid or thread id before start namenode		
+HADOOP-8790	Unresolved	testTrashEmptier() fails when run TestHDFSTrash		
+HADOOP-8940	Unresolved	Add a resume feature to the copyFromLocal and put commands
+HADOOP-8725	 FIXED	MR is broken when security is off		
+HADOOP-8613	 FIXED	AbstractDelegationTokenIdentifier#getUser() should set token auth type		
+HADOOP-8325	 FIXED	Add a ShutdownHookManager to be used by different components instead of the JVM shutdownhook		
+HADOOP-8635	 FIXED	Cannot cancel paths registered deleteOnExit	
+HADOOP-9003	 DUPLICATE	StringIntern not handling null correctly
+HADOOP-9085	Unresolved	start namenode failure,bacause pid of namenode pid file is other process pid or thread id before start namenode		
+HADOOP-8227	 FIXED	Allow RPC to limit ephemeral port range.
+HADOOP-6953	 DUPLICATE	start-{dfs,mapred}.sh scripts fail if HADOOP_HOME is not set
