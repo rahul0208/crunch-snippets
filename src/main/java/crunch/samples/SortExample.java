@@ -10,13 +10,10 @@ import org.apache.crunch.types.writable.Writables;
 import crunch.samples.WordCount.Tokenizer;
 
 /**
- * This will first lowercase all words in the file and then sort's them in
- * ascending order.
- * <p>
  * Sample input args: <i>src/main/resources/hadoopIssues.txt
  * target/sorted-text</i>
  * <P>
- * This would first split all words and converts them to lowercase. It then
+ * This would first split all words and then converts them to lowercase. It then
  * applies sorting and the result would be written back to the output
  */
 public class SortExample {
