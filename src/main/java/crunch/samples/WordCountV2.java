@@ -1,5 +1,8 @@
 package crunch.samples;
 
+import java.io.File;
+
+import org.apache.commons.io.FileUtils;
 import org.apache.crunch.DoFn;
 import org.apache.crunch.Emitter;
 import org.apache.crunch.PCollection;
@@ -7,6 +10,7 @@ import org.apache.crunch.PTable;
 import org.apache.crunch.Pair;
 import org.apache.crunch.Pipeline;
 import org.apache.crunch.impl.mr.MRPipeline;
+import org.apache.crunch.impl.mr.plan.PlanningParameters;
 import org.apache.crunch.types.writable.Writables;
 
 import crunch.samples.WordCount.Tokenizer;
@@ -39,5 +43,7 @@ public class WordCountV2 {
         .parallelDo(new AppendValues(), Writables.tableOf(Writables.longs(), Writables.strings()));
     pipeline.writeTextFile(data, args[1]);
     pipeline.done();
+    String dotFileContents = pipeline.getConfiguration().get(PlanningParameters.PIPELINE_PLAN_DOTFILE);
+    FileUtils.write(new File(args[2]), dotFileContents);
   }
 }
