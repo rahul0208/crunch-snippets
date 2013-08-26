@@ -5,6 +5,7 @@ import org.apache.crunch.Emitter;
 import org.apache.crunch.PCollection;
 import org.apache.crunch.Pipeline;
 import org.apache.crunch.impl.mr.MRPipeline;
+import org.apache.crunch.lib.Sort;
 import org.apache.crunch.types.writable.Writables;
 
 import crunch.samples.WordCount.Tokenizer;
@@ -31,7 +32,7 @@ public class SortExample {
     PCollection<String> lines = pipeline.readTextFile(args[0]);
     PCollection<String> words = lines.parallelDo(new Tokenizer(), Writables.strings()).parallelDo(new Lowecase(),
         Writables.strings());
-    PCollection<String> wordInAscendingOrder = words.sort(true);
+    PCollection<String> wordInAscendingOrder = Sort.sort(words);
     pipeline.writeTextFile(wordInAscendingOrder, args[1]);
     pipeline.done();
   }
