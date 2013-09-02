@@ -1,0 +1,25 @@
+digraph G {
+  "Text(src/main/resources/Rainfall.csv)" [label="Text(src/main/resources/Rainfall.csv)" shape=folder];
+  "Text(target/sorted-metrics)" [label="Text(target/sorted-metrics)" shape=folder];
+  subgraph "cluster-job1" {
+    subgraph "cluster-job1-map" {
+      label = Map; color = blue;
+      "S0@803019734@686104144" [label="RainfallMapper" shape=box];
+      "top10map@202312705@686104144" [label="rainfallMap" shape=box];
+    }
+    subgraph "cluster-job1-reduce" {
+      label = Reduce; color = red;
+      "combine@1560918716@686104144" [label="sumMonthlyRainfallData" shape=box];
+      "GBK@700628060@686104144" [label="GroupByKey" shape=box];
+      "asText@283262590@686104144" [label="output-Text" shape=box];
+      "top10reduce@814007958@686104144" [label="top10Reducer" shape=box];
+    }
+  }
+  "top10reduce@814007958@686104144" -> "asText@283262590@686104144";
+  "S0@803019734@686104144" -> "top10map@202312705@686104144";
+  "asText@283262590@686104144" -> "Text(target/sorted-metrics)";
+  "Text(src/main/resources/Rainfall.csv)" -> "S0@803019734@686104144";
+  "combine@1560918716@686104144" -> "top10reduce@814007958@686104144";
+  "GBK@700628060@686104144" -> "combine@1560918716@686104144";
+  "top10map@202312705@686104144" -> "GBK@700628060@686104144";
+}
